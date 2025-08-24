@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gate-modal" class="gate-modal">
+        <div class="gate-modal-content">
+            <h2>Group Access Required</h2>
+            <p>This site is only accessible via a WhatsApp group link. Enter the secret code to continue:</p>
+            <input type="text" id="group-code" placeholder="Enter code">
+            <button onclick="checkGroupCode()" class="gate-confirm-btn">Enter</button>
+            <p id="gate-error" class="gate-error"></p>
+        </div>
+    </div>
+    <div id="age-modal" class="age-modal">
+        <div class="age-modal-content">
+            <h2>Age Verification</h2>
+            <p>This site is not for people under 18. Please confirm you are 18 years or older to continue.</p>
+            <button onclick="confirmAge()" class="age-confirm-btn">I am 18 or older</button>
+        </div>
+    </div>
+    <div id="site-content">
+        <header>
+            <h1>Welcome to Cookie Bakery!</h1>
+        </header>
+        <main>
+            <section class="product">
+                <img src="cookie.jpg" alt="Delicious Cookie" class="cookie-img">
+                <h2>Chocolate Chip Cookie</h2>
+                <p>Our best-selling homemade cookie. Freshly baked every day!</p>
+                <p class="price">$2.00 each</p>
+                <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+                    <input type="hidden" name="item_name" value="Chocolate Chip Cookie">
+                    <input type="hidden" name="amount" value="2.00">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="20">
+                    <button type="submit" class="paypal-btn">Buy with PayPal</button>
+                </form>
+                <div class="mpesa-section">
+                    <h3>Pay with M-Pesa (Pochi la Biashara)</h3>
+                    <p>Send payment to <strong>0794233751</strong> via M-Pesa Pochi la Biashara.</p>
+                    <button onclick="mpesaPaid()" class="mpesa-btn">I have paid with M-Pesa</button>
+                    <button onclick="copyMpesaNumber()" class="mpesa-btn">Copy Number</button>
+                    <p class="mpesa-note">After payment, please show confirmation at pickup.</p>
+                </div>
+                <div class="qr-section" id="qr-section" style="display:none;">
+                    <h3>Delivery Confirmation</h3>
+                    <p>Scan this QR code at pickup to confirm your delivery:</p>
+                    <img id="qr-img" src="" alt="Delivery QR Code" class="qr-img">
+                    <p id="qr-code-value" class="qr-code-value"></p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 Cookie Bakery</p>
+        </footer>
+    </div>
+    <div id="thankyou-modal" class="thankyou-modal">
+        <div class="thankyou-modal-content">
+            <h2>Thank You!</h2>
+            <p>Your payment was received. This site is now closed for you.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
